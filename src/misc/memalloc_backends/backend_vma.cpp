@@ -25,6 +25,7 @@
 #include "wrappers/device.h"
 #include "wrappers/memory_block.h"
 #include "wrappers/physical_device.h"
+#include "wrappers/instance.h"
 
 /* Inject Vulkan Memory Allocator impl (ignore any warnings reported for the library) ==> */
 #define VMA_IMPLEMENTATION 
@@ -174,6 +175,9 @@ bool Anvil::MemoryAllocatorBackends::VMA::VMAAllocator::init()
     create_info.pAllocationCallbacks        = nullptr;
     create_info.preferredLargeHeapBlockSize = 0;
     create_info.pVulkanFunctions            = m_vma_func_ptrs.get();
+
+    //Ideally we need user to supply this.
+    create_info.instance                    = m_device_ptr->get_parent_instance()->get_instance_vk();
 
     result = vmaCreateAllocator(&create_info,
                                 &m_allocator);
