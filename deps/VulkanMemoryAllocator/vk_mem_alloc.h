@@ -3999,7 +3999,8 @@ VMA_CALL_PRE void VMA_CALL_POST vmaDestroyImage(
 #endif // AMD_VULKAN_MEMORY_ALLOCATOR_H
 
 // For Visual Studio IntelliSense.
-#if defined(__cplusplus) && defined(__INTELLISENSE__)
+//Planted directly from miniaudio.
+#if defined(Q_CREATOR_RUN) || defined(__INTELLISENSE__) || defined(__CDT_PARSER__)
 #define VMA_IMPLEMENTATION
 #endif
 
