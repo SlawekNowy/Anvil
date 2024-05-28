@@ -35,26 +35,6 @@ endif()
 
 configure_file("include/config.h.in" "include/config.h")
 
-include_directories("${Anvil_BINARY_DIR}/include"
-                    "${Anvil_SOURCE_DIR}"
-                    "${Anvil_SOURCE_DIR}/deps"
-                    "${ANVIL_GLSLANG_PATH}"
-                    "${Anvil_SOURCE_DIR}/include")
-
-# Include the Vulkan header.
-if (ANVIL_USE_BUILT_IN_VULKAN_HEADERS)
-        include_directories("${Anvil_SOURCE_DIR}/include")
-else()
-    if (WIN32)
-        include_directories($ENV{VK_SDK_PATH}/Include
-                            $ENV{VULKAN_SDK}/Include)
-    else()
-        include_directories($ENV{VK_SDK_PATH}/x86_64/include
-                            $ENV{VULKAN_SDK}/include
-                            $ENV{VULKAN_SDK}/x86_64/include)
-    endif()
-endif()
-
 if (ANVIL_LINK_STATICALLY_WITH_VULKAN_LIB AND NOT CONTINUOUS_INTEGRATION_RUN)
     if("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
         find_library(VULKAN_LIBRARY
@@ -264,17 +244,37 @@ endif()
 
 add_library(Anvil STATIC ${SRC_LIST})
 
+target_include_directories(Anvil PUBLIC "${Anvil_BINARY_DIR}/include"
+                    "${Anvil_SOURCE_DIR}"
+                    "${Anvil_SOURCE_DIR}/deps"
+                    "${ANVIL_GLSLANG_PATH}"
+                    "${Anvil_SOURCE_DIR}/include")
+
+# Include the Vulkan header.
+if (ANVIL_USE_BUILT_IN_VULKAN_HEADERS)
+    target_include_directories(Anvil PUBLIC "${Anvil_SOURCE_DIR}/include")
+else()
+    if (WIN32)
+        target_include_directories(Anvil PUBLIC $ENV{VK_SDK_PATH}/Include
+                            $ENV{VULKAN_SDK}/Include)
+    else()
+        target_include_directories(Anvil PUBLIC $ENV{VK_SDK_PATH}/x86_64/include
+                            $ENV{VULKAN_SDK}/include
+                            $ENV{VULKAN_SDK}/x86_64/include)
+    endif()
+endif()
+
 if (WIN32)
     if (ANVIL_LINK_WITH_GLSLANG)
-        target_link_libraries(Anvil glslang OGLCompiler OSDependent SPIRV ${VULKAN_LIBRARY})
+        target_link_libraries(Anvil PUBLIC glslang OGLCompiler OSDependent SPIRV ${VULKAN_LIBRARY})
     else()
-        target_link_libraries(Anvil ${VULKAN_LIBRARY})
+        target_link_libraries(Anvil PUBLIC ${VULKAN_LIBRARY})
     endif()
 else()
     if (ANVIL_LINK_WITH_GLSLANG)
-        target_link_libraries(Anvil glslang OGLCompiler OSDependent SPIRV ${VULKAN_LIBRARY} pthread)
+        target_link_libraries(Anvil PUBLIC glslang OGLCompiler OSDependent SPIRV ${VULKAN_LIBRARY} pthread)
     else()
-        target_link_libraries(Anvil ${VULKAN_LIBRARY} pthread)
+        target_link_libraries(Anvil PUBLIC ${VULKAN_LIBRARY} pthread)
     endif()
 endif()
 
