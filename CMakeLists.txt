@@ -244,6 +244,8 @@ endif()
 
 add_library(Anvil STATIC ${SRC_LIST})
 
+target_compile_features(Anvil PRIVATE cxx_std_20)
+
 target_include_directories(Anvil PUBLIC "${Anvil_BINARY_DIR}/include"
                     "${Anvil_SOURCE_DIR}"
                     "${Anvil_SOURCE_DIR}/deps"
