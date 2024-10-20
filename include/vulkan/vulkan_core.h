@@ -7891,7 +7891,6 @@ VKAPI_ATTR void VKAPI_CALL vkCmdDispatchBaseKHR(
     uint32_t                                    groupCountZ);
 #endif
 
-
 #define VK_KHR_shader_draw_parameters 1
 #define VK_KHR_SHADER_DRAW_PARAMETERS_SPEC_VERSION 1
 #define VK_KHR_SHADER_DRAW_PARAMETERS_EXTENSION_NAME "VK_KHR_shader_draw_parameters"
@@ -7913,7 +7912,6 @@ VKAPI_ATTR void VKAPI_CALL vkTrimCommandPoolKHR(
     VkCommandPoolTrimFlags                      flags);
 #endif
 
-
 #define VK_KHR_device_group_creation 1
 #define VK_KHR_DEVICE_GROUP_CREATION_SPEC_VERSION 1
 #define VK_KHR_DEVICE_GROUP_CREATION_EXTENSION_NAME "VK_KHR_device_group_creation"
@@ -7930,7 +7928,6 @@ VKAPI_ATTR VkResult VKAPI_CALL vkEnumeratePhysicalDeviceGroupsKHR(
     uint32_t*                                   pPhysicalDeviceGroupCount,
     VkPhysicalDeviceGroupProperties*            pPhysicalDeviceGroupProperties);
 #endif
-
 
 #define VK_KHR_external_memory_capabilities 1
 #define VK_KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION 1
@@ -7964,7 +7961,6 @@ VKAPI_ATTR void VKAPI_CALL vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     const VkPhysicalDeviceExternalBufferInfo*   pExternalBufferInfo,
     VkExternalBufferProperties*                 pExternalBufferProperties);
 #endif
-
 
 #define VK_KHR_external_memory 1
 #define VK_KHR_EXTERNAL_MEMORY_SPEC_VERSION 1
@@ -9629,7 +9625,6 @@ VKAPI_ATTR void VKAPI_CALL vkDebugReportMessageEXT(
     const char*                                 pMessage);
 #endif
 
-
 #define VK_NV_glsl_shader 1
 #define VK_NV_GLSL_SHADER_SPEC_VERSION    1
 #define VK_NV_GLSL_SHADER_EXTENSION_NAME  "VK_NV_glsl_shader"
@@ -9726,7 +9721,6 @@ VKAPI_ATTR void VKAPI_CALL vkCmdDebugMarkerInsertEXT(
     VkCommandBuffer                             commandBuffer,
     const VkDebugMarkerMarkerInfoEXT*           pMarkerInfo);
 #endif
-
 
 #define VK_AMD_gcn_shader 1
 #define VK_AMD_GCN_SHADER_SPEC_VERSION    1
@@ -9974,7 +9968,6 @@ VKAPI_ATTR void VKAPI_CALL vkCmdDrawIndexedIndirectCountAMD(
     uint32_t                                    stride);
 #endif
 
-
 #define VK_AMD_negative_viewport_height 1
 #define VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_SPEC_VERSION 1
 #define VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_EXTENSION_NAME "VK_AMD_negative_viewport_height"
@@ -10040,7 +10033,6 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetShaderInfoAMD(
     size_t*                                     pInfoSize,
     void*                                       pInfo);
 #endif
-
 
 #define VK_AMD_shader_image_load_store_lod 1
 #define VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION 1
@@ -10255,7 +10247,6 @@ VKAPI_ATTR VkResult VKAPI_CALL vkReleaseDisplayEXT(
     VkDisplayKHR                                display);
 #endif
 
-
 #define VK_EXT_display_surface_counter 1
 #define VK_EXT_DISPLAY_SURFACE_COUNTER_SPEC_VERSION 1
 #define VK_EXT_DISPLAY_SURFACE_COUNTER_EXTENSION_NAME "VK_EXT_display_surface_counter"
@@ -10290,7 +10281,6 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     VkSurfaceKHR                                surface,
     VkSurfaceCapabilities2EXT*                  pSurfaceCapabilities);
 #endif
-
 
 #define VK_EXT_display_control 1
 #define VK_EXT_DISPLAY_CONTROL_SPEC_VERSION 1
@@ -10411,7 +10401,6 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetPastPresentationTimingGOOGLE(
     VkPastPresentationTimingGOOGLE*             pPresentationTimings);
 #endif
 
-
 #define VK_NV_sample_mask_override_coverage 1
 #define VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_SPEC_VERSION 1
 #define VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_EXTENSION_NAME "VK_NV_sample_mask_override_coverage"
@@ -10508,7 +10497,6 @@ VKAPI_ATTR void VKAPI_CALL vkCmdSetDiscardRectangleEXT(
     const VkRect2D*                             pDiscardRectangles);
 #endif
 
-
 #define VK_EXT_conservative_rasterization 1
 #define VK_EXT_CONSERVATIVE_RASTERIZATION_SPEC_VERSION 1
 #define VK_EXT_CONSERVATIVE_RASTERIZATION_EXTENSION_NAME "VK_EXT_conservative_rasterization"
@@ -10598,7 +10586,6 @@ VKAPI_ATTR void VKAPI_CALL vkSetHdrMetadataEXT(
     const VkSwapchainKHR*                       pSwapchains,
     const VkHdrMetadataEXT*                     pMetadata);
 #endif
-
 
 #define VK_EXT_external_memory_dma_buf 1
 #define VK_EXT_EXTERNAL_MEMORY_DMA_BUF_SPEC_VERSION 1
@@ -10868,7 +10855,6 @@ VKAPI_ATTR void VKAPI_CALL vkGetPhysicalDeviceMultisamplePropertiesEXT(
     VkSampleCountFlagBits                       samples,
     VkMultisamplePropertiesEXT*                 pMultisampleProperties);
 #endif
-
 
 #define VK_EXT_blend_operation_advanced 1
 #define VK_EXT_BLEND_OPERATION_ADVANCED_SPEC_VERSION 2
