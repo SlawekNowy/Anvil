@@ -86,7 +86,7 @@ namespace Anvil
         /* linux xlib */
         WINDOW_PLATFORM_XLIB,
 
-        /* linux xlib */
+        /* linux wayland */
         WINDOW_PLATFORM_WAYLAND,
     #endif
 
