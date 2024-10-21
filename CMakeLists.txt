@@ -3,6 +3,7 @@ project (Anvil)
 
 option(ANVIL_INCLUDE_WIN3264_WINDOW_SYSTEM_SUPPORT "Includes 32-/64-bit Windows window system support (Windows builds only)" ON)
 option(ANVIL_INCLUDE_XCB_WINDOW_SYSTEM_SUPPORT     "Includes XCB window system support (Linux builds only)" ON)
+option(ANVIL_INCLUDE_WAYLAND_WINDOW_SYSTEM_SUPPORT     "Includes Wayland window system support (Linux builds only)" ON)
 option(ANVIL_LINK_EXAMPLES                         "Build examples showing how to use Anvil" OFF)
 option(ANVIL_LINK_STATICALLY_WITH_VULKAN_LIB       "Link statically with Vulkan loader. If disabled, Anvil will load the func ptrs from ANVIL_VULKAN_DYNAMIC_DLL_DEPENDENCY at VK instance creation time" ON)
 option(ANVIL_LINK_WITH_GLSLANG                     "Links with glslang, instead of spawning a new process whenever GLSL->SPIR-V conversion is required" ON)
@@ -236,9 +237,15 @@ if(WIN32)
 else()
     if (ANVIL_INCLUDE_XCB_WINDOW_SYSTEM_SUPPORT)
         list (APPEND SRC_LIST "${Anvil_SOURCE_DIR}/include/misc/xcb_loader.h"
-                              "${Anvil_SOURCE_DIR}/src/misc/xcb_loader.cpp"
-                              "${Anvil_SOURCE_DIR}/include/misc/window_xcb.h"
-                              "${Anvil_SOURCE_DIR}/src/misc/window_xcb.cpp")
+                            "${Anvil_SOURCE_DIR}/src/misc/xcb_loader.cpp"
+                            "${Anvil_SOURCE_DIR}/include/misc/window_xcb.h"
+                            "${Anvil_SOURCE_DIR}/src/misc/window_xcb.cpp")
+    endif()
+    if (ANVIL_INCLUDE_WAYLAND_WINDOW_SYSTEM_SUPPORT)
+        list (APPEND SRC_LIST "${Anvil_SOURCE_DIR}/include/misc/wayland_loader.h"
+                            "${Anvil_SOURCE_DIR}/src/misc/wayland_loader.cpp"
+                            "${Anvil_SOURCE_DIR}/include/misc/window_wayland.h"
+                            "${Anvil_SOURCE_DIR}/src/misc/window_wayland.cpp")
     endif()
 endif()
 
