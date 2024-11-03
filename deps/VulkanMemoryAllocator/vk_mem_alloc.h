@@ -17195,6 +17195,7 @@ VkResult VmaAllocator_T::AllocateVulkanMemory(const VkMemoryAllocateInfo* pAlloc
 {
     AtomicTransactionalIncrement<uint32_t> deviceMemoryCountIncrement;
     const uint64_t prevDeviceMemoryCount = deviceMemoryCountIncrement.Increment(&m_DeviceMemoryCount);
+    ANVIL_REDUNDANT_ARGUMENT_CONST(prevDeviceMemoryCount) //beacuse of define below.
 #if VMA_DEBUG_DONT_EXCEED_MAX_MEMORY_ALLOCATION_COUNT
     if(prevDeviceMemoryCount >= m_PhysicalDeviceProperties.limits.maxMemoryAllocationCount)
     {
