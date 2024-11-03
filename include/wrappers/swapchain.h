@@ -40,7 +40,7 @@
 #include "wrappers/image.h"
 #include "wrappers/image_view.h"
 #include "wrappers/rendering_surface.h"
-
+#include <atomic>
 namespace Anvil
 {
     /* Wrapper class for a Vulkan Swapchain */
@@ -214,9 +214,10 @@ namespace Anvil
 
         bool m_destroy_swapchain_before_parent_window_closes;
 
-        volatile uint64_t m_n_acquire_counter;
-        volatile uint32_t m_n_acquire_counter_rounded;
-        volatile uint64_t m_n_present_counter;
+        //they were volatile before. What was AMD's intent?d
+        std::atomic_uint64_t m_n_acquire_counter;
+        std::atomic_uint32_t m_n_acquire_counter_rounded;
+        std::atomic_uint64_t m_n_present_counter;
 
         std::vector<Anvil::Queue*> m_observed_queues;
     };

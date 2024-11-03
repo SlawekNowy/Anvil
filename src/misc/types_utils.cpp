@@ -440,7 +440,7 @@ const char* Anvil::Utils::get_raw_string(VkAttachmentLoadOp in_load_op)
         "VK_ATTACHMENT_LOAD_OP_CLEAR",
         "VK_ATTACHMENT_LOAD_OP_DONT_CARE",
     };
-    static const uint32_t n_attachment_load_op_strings = sizeof(attachment_load_op_strings) / sizeof(attachment_load_op_strings[0]);
+    //static const uint32_t n_attachment_load_op_strings = sizeof(attachment_load_op_strings) / sizeof(attachment_load_op_strings[0]);
 
     // static_assert(n_attachment_load_op_strings == VK_ATTACHMENT_LOAD_OP_RANGE_SIZE, "");
     // anvil_assert (in_load_op                   <= VK_ATTACHMENT_LOAD_OP_END_RANGE);
@@ -456,7 +456,7 @@ const char* Anvil::Utils::get_raw_string(VkAttachmentStoreOp in_store_op)
         "VK_ATTACHMENT_STORE_OP_STORE",
         "VK_ATTACHMENT_STORE_OP_DONT_CARE",
     };
-    static const uint32_t n_attachment_store_op_strings = sizeof(attachment_store_op_strings) / sizeof(attachment_store_op_strings[0]);
+    //static const uint32_t n_attachment_store_op_strings = sizeof(attachment_store_op_strings) / sizeof(attachment_store_op_strings[0]);
 
     // static_assert(n_attachment_store_op_strings == VK_ATTACHMENT_STORE_OP_RANGE_SIZE, "");
     // anvil_assert (in_store_op                   <= VK_ATTACHMENT_STORE_OP_END_RANGE);
@@ -694,7 +694,7 @@ const char* Anvil::Utils::get_raw_string(VkImageType in_image_type)
         "VK_IMAGE_TYPE_2D",
         "VK_IMAGE_TYPE_3D"
     };
-    static const uint32_t n_image_types = sizeof(image_types) / sizeof(image_types[0]);
+    //static const uint32_t n_image_types = sizeof(image_types) / sizeof(image_types[0]);
 
     // static_assert(n_image_types == VK_IMAGE_TYPE_RANGE_SIZE, "");
     // anvil_assert (in_image_type <  VK_IMAGE_TYPE_RANGE_SIZE);
@@ -715,7 +715,7 @@ const char* Anvil::Utils::get_raw_string(VkImageViewType in_image_view_type)
         "VK_IMAGE_VIEW_TYPE_2D_ARRAY",
         "VK_IMAGE_VIEW_TYPE_CUBE_ARRAY",
     };
-    static const uint32_t n_image_view_types = sizeof(image_view_types) / sizeof(image_view_types[0]);
+    //static const uint32_t n_image_view_types = sizeof(image_view_types) / sizeof(image_view_types[0]);
 
     // static_assert(n_image_view_types == VK_IMAGE_VIEW_TYPE_RANGE_SIZE, "");
     // anvil_assert (in_image_view_type <  VK_IMAGE_VIEW_TYPE_RANGE_SIZE);

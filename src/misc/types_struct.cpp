@@ -1161,11 +1161,15 @@ Anvil::FenceProperties::FenceProperties(const ExternalFenceProperties& in_extern
     /* Stub */
 }
 
-Anvil::FormatProperties::FormatProperties()
-{
+Anvil::FormatProperties::FormatProperties() :
+buffer_capabilities(FormatFeatureFlagBits::NONE),
+linear_tiling_capabilities(FormatFeatureFlagBits::NONE),
+optimal_tiling_capabilities(FormatFeatureFlagBits::NONE)
+{/*
     memset(this,
            0,
            sizeof(*this) );
+           */
 }
 
 Anvil::FormatProperties::FormatProperties(const VkFormatProperties& in_format_props)
@@ -3785,11 +3789,20 @@ Anvil::ShaderModuleStageEntryPoint& Anvil::ShaderModuleStageEntryPoint::operator
     return *this;
 }
 
-Anvil::SparseImageAspectProperties::SparseImageAspectProperties()
+Anvil::SparseImageAspectProperties::SparseImageAspectProperties() :
+    aspect_mask(ImageAspectFlagBits::NONE),
+    flags(SparseImageFormatFlagBits::NONE),
+    granularity({0,0,0}),
+    mip_tail_first_lod(0),
+    mip_tail_offset(0),
+    mip_tail_size(0),
+    mip_tail_stride(0)
 {
+    /*
     memset(this,
            0,
            sizeof(*this) );
+           */
 }
 
 Anvil::SparseImageAspectProperties::SparseImageAspectProperties(const Anvil::SparseImageMemoryRequirements& in_req)

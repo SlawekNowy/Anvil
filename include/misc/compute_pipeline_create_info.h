@@ -46,6 +46,7 @@ namespace Anvil
          *
          *  @return true if successful, false otherwise.
          **/
+        using BasePipelineCreateInfo::add_specialization_constant; //required beacuse we want to overlay the function.
         bool add_specialization_constant(uint32_t    in_constant_id,
                                          uint32_t    in_n_data_bytes,
                                          const void* in_data_ptr)

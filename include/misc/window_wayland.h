@@ -28,6 +28,7 @@
 #define WINDOW_WAYLAND_H
 
 #include "misc/window.h"
+#include "misc/wayland_loader.h"
 #include <wayland-client.h>
 
 namespace Anvil

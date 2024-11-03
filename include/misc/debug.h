@@ -56,9 +56,10 @@
     #define anvil_assert_fail()
 #endif
 
-
-//#define is_vk_call_successful(result) \
-//    (result == VK_SUCCESS || result == VK_ERROR_VALIDATION_FAILED_EXT || result == VK_INCOMPLETE)
+/*
+#define is_vk_call_successful(result) \
+    (result == VK_SUCCESS || result == VK_ERROR_VALIDATION_FAILED_EXT || result == VK_INCOMPLETE)
+*/
 #define is_vk_call_successful(result) \
     (result == VK_SUCCESS || result == VK_INCOMPLETE)
 
