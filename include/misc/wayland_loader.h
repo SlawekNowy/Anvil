@@ -22,17 +22,12 @@
 
 #pragma once
 
-#include <wayland-client.h>
+#include "linux_loader_result.h"
+#include <wayland-client-core.h>
 
 typedef uint32_t uint32;
 
-enum class Result : int32_t
-{
-#ifndef Success
-    Success          = 0x00000000,
-#endif
-    ErrorUnavailable = -(0x00000002),
-};
+
 #if 0
 // symbols from libxcb-keysyms.so
 typedef xcb_keysym_t       (*PFN_XcbKeyReleaseLookupKeysym)(xcb_key_symbols_t*       syms,

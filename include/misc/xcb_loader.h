@@ -22,19 +22,12 @@
 
 #pragma once
 
+#include "linux_loader_result.h"
 #include <X11/keysym.h>
 #include <xcb/xcb.h>
 #include <xcb/xcb_keysyms.h>
 
-typedef uint32_t uint32;
 
-enum class Result : int32_t
-{
-#ifndef Success
-    Success          = 0x00000000,
-#endif
-    ErrorUnavailable = -(0x00000002),
-};
 
 // symbols from libxcb-keysyms.so
 typedef xcb_keysym_t       (*PFN_XcbKeyReleaseLookupKeysym)(xcb_key_symbols_t*       syms,
