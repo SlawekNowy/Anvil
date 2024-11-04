@@ -30,6 +30,10 @@
 /* Inject Vulkan Memory Allocator impl (ignore any warnings reported for the library) ==> */
 #define VMA_IMPLEMENTATION 
 
+#define VMA_STATIC_VULKAN_FUNCTIONS 0
+#define VMA_DYNAMIC_VULKAN_FUNCTIONS 0 //This disables automatic detection of Dynamic funcs. This should be fine, since we already supply these ourselves.
+
+
 #ifdef max
     #undef max
 #endif
