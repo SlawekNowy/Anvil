@@ -5,7 +5,7 @@ option(ANVIL_INCLUDE_WIN3264_WINDOW_SYSTEM_SUPPORT "Includes 32-/64-bit Windows 
 option(ANVIL_INCLUDE_XCB_WINDOW_SYSTEM_SUPPORT     "Includes XCB window system support (Linux builds only)" ON)
 option(ANVIL_INCLUDE_WAYLAND_WINDOW_SYSTEM_SUPPORT     "Includes Wayland window system support (Linux builds only)" ON)
 option(ANVIL_LINK_EXAMPLES                         "Build examples showing how to use Anvil" OFF)
-option(ANVIL_LINK_STATICALLY_WITH_VULKAN_LIB       "Link statically with Vulkan loader. If disabled, Anvil will load the func ptrs from ANVIL_VULKAN_DYNAMIC_DLL_DEPENDENCY at VK instance creation time" ON)
+option(ANVIL_LINK_STATICALLY_WITH_VULKAN_LIB       "Link statically with Vulkan loader. If disabled, Anvil will load the func ptrs from ANVIL_VULKAN_DYNAMIC_DLL_DEPENDENCY at VK instance creation time" OFF)
 option(ANVIL_LINK_WITH_GLSLANG                     "Links with glslang, instead of spawning a new process whenever GLSL->SPIR-V conversion is required" ON)
 option(ANVIL_USE_BUILT_IN_GLSLANG                  "Use glslang version included with Anvil. If disabled, Anvil will assume ANVIL_GLSLANG_PATH holds path to library's root directory." ON)
 option(ANVIL_USE_BUILT_IN_VULKAN_HEADERS           "Use built-in Vulkan headers. If disabled, VK_SDK_PATH and VULKAN_SDK env vars will be assumed to hold the location where the headers can be found." ON)
