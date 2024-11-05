@@ -30,6 +30,11 @@
 /* Inject Vulkan Memory Allocator impl (ignore any warnings reported for the library) ==> */
 #define VMA_IMPLEMENTATION 
 
+// We already have PFN table fetched by the time this is needed anyway.
+#define VMA_STATIC_VULKAN_FUNCTIONS 0
+#define VMA_DYNAMIC_VULKAN_FUNCTIONS 0
+ 
+
 #ifdef max
     #undef max
 #endif
