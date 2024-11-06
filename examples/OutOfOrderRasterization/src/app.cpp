@@ -177,13 +177,14 @@
     #endif
 #endif
 
+/* Sanity checks */
 #if defined(_WIN32)
     #if !defined(ANVIL_INCLUDE_WIN3264_WINDOW_SYSTEM_SUPPORT) && !defined(ENABLE_OFFSCREEN_RENDERING)
         #error Anvil has not been built with Win32/64 window system support. The application can only be built in offscreen rendering mode.
     #endif
 #else
-    #if !defined(ANVIL_INCLUDE_XCB_WINDOW_SYSTEM_SUPPORT) && !defined(ENABLE_OFFSCREEN_RENDERING)
-        #error Anvil has not been built with XCB window system support. The application can only be built in offscreen rendering mode.
+    #if !defined(ANVIL_INCLUDE_XCB_WINDOW_SYSTEM_SUPPORT) && !defined(ANVIL_INCLUDE_WAYLAND_WINDOW_SYSTEM_SUPPORT) && !defined(ENABLE_OFFSCREEN_RENDERING)
+        #error Anvil has not been built with XCB nor Wayland window system support. The application can only be built in offscreen rendering mode.
     #endif
 #endif
 
@@ -2128,7 +2129,19 @@ void App::init_window()
         #ifdef _WIN32
             const Anvil::WindowPlatform platform = Anvil::WINDOW_PLATFORM_SYSTEM;
         #else
-            const Anvil::WindowPlatform platform = Anvil::WINDOW_PLATFORM_XCB;
+            Anvil::WindowPlatform platform = Anvil::WINDOW_PLATFORM_UNKNOWN;
+            /*
+                A note for the users of this library and users of software using this library:
+                Only local sessions are supported at this moment. This is due to the fact 
+                that we use XDG_SESSION_TYPE envvar to detect the use of wayland.
+                Unfortunately XDG_SESSION_TYPE is not set for remote sessions.
+                See https://stackoverflow.com/questions/45536141/how-i-can-find-out-if-a-linux-system-uses-wayland-or-x11#comment78034504_45536186 for details.
+            */
+            std::string sessionName = getenv("XDG_SESSION_TYPE");
+            if(sessionName.compare("wayland") == 0 && getenv("WAYLAND_DISPLAY"))
+                platform = Anvil::WINDOW_PLATFORM_WAYLAND;
+            else if (sessionName.compare("x11")==0 && getenv("DISPLAY"))
+                platform = Anvil::WINDOW_PLATFORM_XCB; //TODO: We need to check for XCB here.
         #endif
     #endif
 
