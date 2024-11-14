@@ -35,6 +35,9 @@
     #if defined(ANVIL_INCLUDE_XCB_WINDOW_SYSTEM_SUPPORT)
         #include "misc/window_xcb.h"
     #endif
+    #if defined(ANVIL_INCLUDE_WAYLAND_WINDOW_SYSTEM_SUPPORT)
+        #include "misc/window_wayland.h"
+    #endif
 #endif /* _WIN32 */
 
 #include "misc/dummy_window.h"

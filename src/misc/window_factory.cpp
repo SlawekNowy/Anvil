@@ -84,9 +84,22 @@ Anvil::WindowUniquePtr Anvil::WindowFactory::create_window(WindowPlatform       
                 break;
             }
         #endif
+        #if defined(ANVIL_INCLUDE_WAYLAND_WINDOW_SYSTEM_SUPPORT)
+
+            case WINDOW_PLATFORM_WAYLAND:
+            {
+                result_ptr = Anvil::WindowWayland::create(in_title,
+                                                      in_width,
+                                                      in_height,
+                                                      in_closable,
+                                                      in_present_callback_func,
+                                                      in_visible);
+
+                break;
+            }
+        #endif
 
         case WINDOW_PLATFORM_XLIB:
-        case WINDOW_PLATFORM_WAYLAND:
             /* Fall-back - TODO */
 
 #endif /* !_WIN32 */

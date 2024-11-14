@@ -47,8 +47,8 @@ Result WaylandLoader::init() {  Result result = Result::Success;
 
     if (m_initialized == false)
     {
-        // resolve symbols from libxcb-keysyms.so.1
-        m_library_handles[WAYLAND_LOADER_LIBRARIES_CLIENT] = dlopen("libxcb-keysyms.so.1",
+        // resolve symbols from libwayland-client.so
+        m_library_handles[WAYLAND_LOADER_LIBRARIES_CLIENT] = dlopen("libwayland-client.so.0",
                                                                      RTLD_LAZY);
 
         if (m_library_handles[WAYLAND_LOADER_LIBRARIES_CLIENT] == nullptr)
@@ -60,6 +60,20 @@ Result WaylandLoader::init() {  Result result = Result::Success;
             m_funcs.pfn_wl_display_connect        = reinterpret_cast<PFN_wl_display_connect>       (dlsym(m_library_handles[WAYLAND_LOADER_LIBRARIES_CLIENT],
                                                                                                     "wl_display_connect") );
             m_funcs.pfn_wl_display_disconnect = reinterpret_cast<PFN_wl_display_disconnect>(dlsym(m_library_handles[WAYLAND_LOADER_LIBRARIES_CLIENT],
+                                                                                                    "wl_display_disconnect") );
+        }
+        m_library_handles[WAYLAND_LOADER_LIBRARIES_DECOR] = dlopen("libdecor-0.so.0",
+                                                                     RTLD_LAZY);
+
+        if (m_library_handles[WAYLAND_LOADER_LIBRARIES_DECOR] == nullptr)
+        {
+            result = Result::ErrorUnavailable;
+        }
+        else
+        {
+            m_funcs.pfn_wl_display_connect        = reinterpret_cast<PFN_wl_display_connect>       (dlsym(m_library_handles[WAYLAND_LOADER_LIBRARIES_DECOR],
+                                                                                                    "wl_display_connect") );
+            m_funcs.pfn_wl_display_disconnect = reinterpret_cast<PFN_wl_display_disconnect>(dlsym(m_library_handles[WAYLAND_LOADER_LIBRARIES_DECOR],
                                                                                                     "wl_display_disconnect") );
         }
 

@@ -77,6 +77,9 @@
         "thread": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "source_location": "cpp"
+        "source_location": "cpp",
+        "ios": "cpp",
+        "locale": "cpp",
+        "*.def": "cpp"
     }
 }

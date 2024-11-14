@@ -131,8 +131,8 @@ struct WaylandLoaderFuncs {
 enum WaylandLoaderLibraries : uint32
 {
     WAYLAND_LOADER_LIBRARIES_CLIENT = 0,
-
-    WAYLAND_LOADER_LIBRARIES_COUNT = 1
+    WAYLAND_LOADER_LIBRARIES_DECOR = 1,
+    WAYLAND_LOADER_LIBRARIES_COUNT = 2
 };
 /*
  * Resolves all external symbols that are going to be needed when using Wayland functionality.

@@ -95,6 +95,8 @@ namespace Anvil
         XCBLoader                m_xcb_loader;
         */
         wl_display*  m_display_ptr;
+        wl_compositor* m_compositor_ptr;
+        wl_surface* m_surface_ptr;
         WaylandLoader m_wayland_loader;
     };
 }; /* namespace Anvil */

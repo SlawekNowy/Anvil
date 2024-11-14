@@ -29,6 +29,7 @@
 #include <forward_list>
 #include <mutex>
 #include <string>
+#include <variant>
 
 #include "config.h"
 #include "misc/debug.h"
@@ -88,7 +89,11 @@
         typedef void* WindowHandle;
     #endif
 #else
-    #if defined(ANVIL_INCLUDE_XCB_WINDOW_SYSTEM_SUPPORT)
+    #if defined(ANVIL_INCLUDE_XCB_WINDOW_SYSTEM_SUPPORT) && defined(ANVIL_INCLUDE_WAYLAND_WINDOW_SYSTEM_SUPPORT)
+        //uh oh. The system we have so far allows only for one type of window, and here we have two.
+        //PLACEHOLDER. TODO: Use std::variant?
+        typedef std::variant<xcb_window_t,wl_surface*> WindowHandle;
+    #elif defined(ANVIL_INCLUDE_XCB_WINDOW_SYSTEM_SUPPORT)
         #include "xcb_loader.h"
 
         typedef xcb_window_t WindowHandle;
@@ -96,7 +101,7 @@
 
         #include "wayland_loader.h"
 
-        typedef wl_window* WindowHandle;
+        typedef wl_surface* WindowHandle;
     #else
         typedef void* WindowHandle;
     #endif
